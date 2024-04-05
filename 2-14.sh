@@ -21,13 +21,23 @@ fi
 
 #Проверка наличия переменных окружения
 if [ -z "$PREFIX" ] || [ -z "$START" ] || [ -z "$END" ]; then
-	echo "Необходимо ввести переменные окружения PREFIX, START и END."
+	echo -n "Необходимо ввести переменную(ые) окружения: "
+ 	if [ -z "$PREFIX" ]; then
+  		echo -n "PREFIX "
+    	fi
+     	if [ -z "$START" ]; then
+  		echo -n "START "
+    	fi
+     	if [ -z "$END" ]; then
+  		echo -n "END "
+    	fi
+     	echo
 	error
 fi
 
 #Проверка правильности ввода начального и конечного номера
 if [ "$END" -lt "$START" ]; then
-	echo "Конечный комер(END) не может быть меньше начального(START)."
+	echo "Конечный номер(END) не может быть меньше начального(START)."
 	error
 fi
 
